@@ -1,5 +1,13 @@
 fn main() {
-    // ###################################################################
+
+    ch3_1();
+    ch3_2();
+    ch3_3();
+
+}
+
+fn ch3_1() {
+        // ###################################################################
     // ch 3.1 variables and mutability
     // ###################################################################
 
@@ -9,7 +17,9 @@ fn main() {
     println!("x = {x}");
     x = 6;
     println!("x = {x}");
+}
 
+fn ch3_2() {
     // ###################################################################
     // ch 3.2 data types
     // ###################################################################
@@ -69,7 +79,7 @@ fn main() {
     println!("xemoji = {xemoji}");
 
     // compound types
-    // tuple is a set size group of various types
+    // tuple is a set size group of various types: stored on heap
     // access individual items with .
     let xtup: (i32, f64, u8, char, bool) = (9_001, 9_000.1, 254, '💋', true);
     println!("xtup.0 = {}", xtup.0);
@@ -86,8 +96,41 @@ fn main() {
     println!("tup4 = {tup4}");
     println!("tup5 = {tup5}");
 
-    // arrays are accesseed by elements in []
+    // arrays are accesseed by elements in []: stored on stack
     let arr: [i32; 5] = [1, 2, 3, 4, 5];
     println!("arr = {}", arr[0]);
+}
 
+fn ch3_3() {
+    // ###################################################################
+    // ch 3.3 functions
+    // ###################################################################
+
+    // functions can be given hard values
+    fn another_function(x: i32) {
+        println!("x = {x}");
+    }
+    another_function(5);
+
+    // functions require argument types by design
+    fn print_labeled_measurement (value: i32, unit_label: char) {
+        println!("{value} {unit_label}");
+    }
+    print_labeled_measurement(5, 't');
+
+    // statements are instructions that do not return a value
+    // expressions evaluate and return a value
+    let _y = 6;     // a statement, a variable is created and assignment is performed
+    let z: i32 = { 
+        let x: i32 = 5; 
+        x + 1 // expressions do not use semicolon, it would become a statement if one was used
+    }; // this block returns 6 and assigns to z
+    println!("z = {z}");
+
+    // returning values uses (-> type) of expected return
+    fn five () -> i32 {
+        5
+    }
+    let x = five();
+    println!("x = {x}");
 }
