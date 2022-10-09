@@ -3,11 +3,13 @@ fn main() {
     ch3_1();
     ch3_2();
     ch3_3();
+    ch3_4();
+    ch3_5();
 
 }
 
 fn ch3_1() {
-        // ###################################################################
+    // ###################################################################
     // ch 3.1 variables and mutability
     // ###################################################################
 
@@ -133,4 +135,82 @@ fn ch3_3() {
     }
     let x = five();
     println!("x = {x}");
+}
+
+fn ch3_4() {
+    // ch3_4 is about comments
+}
+
+fn ch3_5() {
+    // ###################################################################
+    // ch 3.5 flow control
+    // ###################################################################
+
+    // if statements
+    let number: i32 = 5;
+    if number % 5 == 5 {
+        println!("number is 5");
+    } else if number % 5 > 1 {
+        println!("more than 1");
+    } else if number + 10 < 10 {
+        println!("less than 10");
+    } else {
+        println!("this is the else")
+    }
+
+    // if in a variable
+    let condition: bool = false;
+    let x: i32 = if condition { 5 } else { 6 };
+    println!("x = {x}");
+
+    // loops
+    let mut counter: i32 = 0;
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+    println!("result = {result}");
+
+    // loop labels are used to specify a specific loop when there are multiple
+    // nested loops. this will allow to break out of a specific loop
+    let mut count: i32 = 0;
+    'counting_up: loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9    {
+                break;
+            }
+            if count == 2 { 
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+        count += 1;
+    }
+    println!("end count = {count}");
+
+    // while loops
+    let mut index: usize = 0;
+    let arr: [i32; 5] = [10, 20, 30, 40, 50];
+    while index < 5 {
+        println!("index[{}] = {}", index, arr[index]);
+        index += 1;
+    }
+
+    // for loops
+    let arr2 = [10, 20, 30, 40, 50];
+    for i in arr2 {
+        println!("element = {i}");
+    }
+
+    // reversing
+    for number in (1..4).rev() {
+        println!("{number}!");
+    }
+    println!("blast off!");
 }
