@@ -46,6 +46,18 @@ fn ch4_2() {
     // ###################################################################
     // ch 4.2 references and borrowing
     // ###################################################################
+
+    // calc_length from above requires assigning the string to a new variable, below is the same
+    // function to calculate length but when we call the function we pass a reference to s1 so that
+    // we no longer require s2 to return the string argument to
+    fn calc_length (s: &String) -> usize {
+        s.len()
+    }
+    let s1: String = String::from("hola");
+    //let len = calc_length(&s1);
+    println!("{} is {} characters long", s1, calc_length(&s1));
+
+    
 }
 
 fn ch4_3() {
